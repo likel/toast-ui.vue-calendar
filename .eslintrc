@@ -10,5 +10,8 @@
     },
     "plugins": [
         "vue"
-    ]
+    ],
+    "rules": {
+        'linebreak-style':0
+    }
 }
