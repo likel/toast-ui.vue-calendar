@@ -47,6 +47,6 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "tui-calendar": "^1.11.0"
+    "tui-calendar": "^1.15.3"
   }
 }
