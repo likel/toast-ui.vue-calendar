@@ -84,6 +84,7 @@ export default {
         return [];
       }
     },
+    offsetCalculator: '',
     disableDblClick: {
       type: Boolean,
       default: false
@@ -139,7 +140,16 @@ export default {
       deep: true
     },
     timezones(newValue) {
-      this.calendarInstance.setOptions({timezones: newValue});
+      if (this.offsetCalculator) {
+        this.calendarInstance.setOptions({timezone: {
+            zones: newValue, offsetCalculator: this.offsetCalculator
+        }});
+      }
+    },
+    offsetCalculator(newValue) {
+      this.calendarInstance.setOptions({timezone: {
+          zones:this.timezones, offsetCalculator: this.offsetCalculator
+      }});
     },
     disableDblClick(newValue) {
       this.calendarInstance.setOptions({disableDblClick: newValue});
@@ -163,7 +173,7 @@ export default {
       calendars: this.calendars,
       useCreationPopup: this.useCreationPopup,
       useDetailPopup: this.useDetailPopup,
-      timezones: this.timezones,
+      timezone: {zones: this.timezones, offsetCalculator: this.offsetCalculator},
       disableDblClick: this.disableDblClick,
       disableClick: this.disableClick,
       isReadOnly: this.isReadOnly,
