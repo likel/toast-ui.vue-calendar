@@ -142,13 +142,19 @@ export default {
     timezones(newValue) {
       if (this.offsetCalculator) {
         this.calendarInstance.setOptions({timezone: {
-            zones: newValue, offsetCalculator: this.offsetCalculator
+          zones: newValue,
+          offsetCalculator: this.offsetCalculator
+        }});
+      } else {
+        this.calendarInstance.setOptions({timezone: {
+          zones: newValue
         }});
       }
     },
     offsetCalculator(newValue) {
       this.calendarInstance.setOptions({timezone: {
-          zones:this.timezones, offsetCalculator: this.offsetCalculator
+        zones: this.timezones,
+        offsetCalculator: newValue
       }});
     },
     disableDblClick(newValue) {
@@ -173,7 +179,10 @@ export default {
       calendars: this.calendars,
       useCreationPopup: this.useCreationPopup,
       useDetailPopup: this.useDetailPopup,
-      timezone: {zones: this.timezones, offsetCalculator: this.offsetCalculator},
+      timezone: {
+        zones: this.timezones,
+        offsetCalculator: this.offsetCalculator
+      },
       disableDblClick: this.disableDblClick,
       disableClick: this.disableClick,
       isReadOnly: this.isReadOnly,
